@@ -1,0 +1,21 @@
+<div class="mt-2">
+  <div class="card">
+    <div class="card-header">
+      <strong class="card-title" style="font-size: 25px"><%= @article.title %></strong>
+    </div>
+    <div class="card-body">
+      <p class="card-text"><%= simple_format(@article.post) %></p>
+    </div>
+    <div class="card-footer text-right">
+      <div class="float-left">Creator: @User</div>
+      <div class="float-right"><%= distance_of_time_in_words(Time.now, @article.created_at, include_seconds: true) %></div>
+    </div>
+  </div>
+</div>
+
+<div class="mt-2">
+  <%= link_to 'Back', articles_path, class: 'btn btn-success' %>
+  <%= link_to 'Edit', edit_article_path, class: 'btn btn-success' %>
+  <%= link_to 'Delete', article_path, method: :delete,
+              data: { confirm: 'Are you sure?' }, class: 'btn btn-success' %>
+</div>

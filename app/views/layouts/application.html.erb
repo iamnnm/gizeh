@@ -12,7 +12,7 @@
 
   <body>
     <nav class="navbar navbar-expand-lg navbar-light bg-light">
-      <a class="navbar-brand" href="#">Navbar</a>
+      <%= link_to 'Gizeh', root_path, class: 'navbar-brand'%>
       <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
         <span class="navbar-toggler-icon"></span>
       </button>
@@ -43,12 +43,48 @@
         <form class="form-inline my-2 my-lg-0">
           <input class="form-control mr-sm-2" type="search" placeholder="Search" aria-label="Search">
           <button class="btn btn-outline-success my-2 my-sm-0" type="submit">Search</button>
+          <%= link_to 'New Post', new_article_path, class: 'btn btn-success mx-2' %>
         </form>
       </div>
     </nav>
 
     <div class="container">
-      <%= yield %>
+      <div class="row">
+        <div class="col-1">
+          <div class="mt-2">
+            <div class="btn-group-vertical" role="group" aria-label="Basic example">
+              <button type="button" class="btn btn-secondary">▲</button>
+              <button type="button" class="btn btn-secondary">1988</button>
+              <button type="button" class="btn btn-secondary">▼</button>
+            </div>
+          </div>
+        </div>
+        <div class="col-7">
+
+          <% if flash.any? %>
+            <% flash.each do |name, message| %>
+              <%= content_tag :div, message, class: "#{name}" %>
+            <% end %>
+          <% end %>
+
+          <%= yield %>
+
+        </div>
+        <div class="col-3">
+          <div class="mt-2">
+            <div class="card">
+              <div class="card-body">
+                <h4 class="card-title">Card title</h4>
+                <h6 class="card-subtitle mb-2 text-muted">Card subtitle</h6>
+                <p class="card-text">
+                  Some quick example text to build on the card title
+                  and make up the bulk of the card's content.
+                </p>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
     </div>
   </body>
 </html>

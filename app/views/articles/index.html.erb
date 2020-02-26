@@ -1,0 +1,16 @@
+<% @articles.each do |article| %>
+  <div class="mt-2">
+    <div class="card">
+      <div class="card-header">
+        <strong class="card-title" style="font-size: 25px" id="a"><%= link_to "#{article.title}", article %></strong>
+      </div>
+      <div class="card-body">
+        <p class="card-text"><%= simple_format(article.post) %></p>
+      </div>
+      <div class="card-footer">
+        <div class="float-left">Creator: @User</div>
+        <div class="float-right"><%= distance_of_time_in_words(Time.now, article.created_at, include_seconds: true) %></div>
+      </div>
+    </div>
+  </div>
+<% end %>
