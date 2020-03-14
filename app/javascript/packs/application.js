@@ -16,6 +16,20 @@ document.addEventListener("turbolinks:load", () => {
     $('[data-toggle="popover"]').popover();
 });
 
+document.addEventListener("turbolinks:load", ()=>{
+    $ ('.sticky').each(function(){
+        let closeTrigger = $(this).find('.close-block').length;
+        if (closeTrigger < 1 ){ // проверяем наличие кнопки и если нет - добавляем
+            $(this).append('<span class="close-block float-right pr-2">✖</span>');
+        }else{
+            return '';
+        }
+        $('.close-block').on('click', function(){
+            $(this).closest('.sticky').fadeOut(200);
+        });
+    });
+});
+
 
 // Uncomment to copy all static images under ../images to the output folder and reference
 // them with the image_pack_tag helper in views (e.g <%= image_pack_tag 'rails.png' %>)

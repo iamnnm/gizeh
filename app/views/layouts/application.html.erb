@@ -12,6 +12,7 @@
 
   <body>
     <nav class="navbar navbar-expand-lg navbar-light bg-light">
+    <div class="container">
       <%= link_to 'Gizeh', root_path, class: 'navbar-brand'%>
       <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
         <span class="navbar-toggler-icon"></span>
@@ -43,49 +44,43 @@
         <form class="form-inline my-2 my-lg-0">
           <input class="form-control mr-sm-2" type="search" placeholder="Search" aria-label="Search">
           <button class="btn btn-outline-success my-2 my-sm-0" type="submit">Search</button>
-          <%= link_to 'New Post', new_article_path, class: 'btn btn-success mx-2' %>
         </form>
       </div>
+    </div>
     </nav>
 
-    <div class="container">
+    <% if flash.any? %>
+    <% flash.each do |name, message| %>
+      <%= content_tag :div, message, class: "sticky fixed-top text-center alert-success py-1" %>
+    <% end %>
+  <% end %>
+
+    <div class="container q">
       <div class="row">
-        <div class="col-1">
-          <div class="mt-2">
-            <div class="btn-group-vertical" role="group" aria-label="Basic example">
-              <button type="button" class="btn btn-secondary">▲</button>
-              <button type="button" class="btn btn-secondary">1988</button>
-              <button type="button" class="btn btn-secondary">▼</button>
-            </div>
-          </div>
-        </div>
-        <div class="col-7">
-
-          <p class="notice"><%= notice %></p>
-          <p class="alert"><%= alert %></p>
-
-          <% if flash.any? %>
-            <% flash.each do |name, message| %>
-              <%= content_tag :div, message, class: "#{name}" %>
-            <% end %>
-          <% end %>
+        <div class="col-9">
 
           <%= yield %>
 
         </div>
         <div class="col-3">
-          <div class="mt-2">
-            <div class="card">
-              <div class="card-body">
-                <h4 class="card-title">Card title</h4>
-                <h6 class="card-subtitle mb-2 text-muted">Card subtitle</h6>
+          <div class="card">
+            <div class="card-body">
+              <% if user_signed_in? %>
+                <h4 class="card-title"><%= current_user.name %></h4>
+                <h6 class="card-subtitle mb-2 text-muted"><%= current_user.email %></h6>
                 <p class="card-text">
-                  Some quick example text to build on the card title
-                  and make up the bulk of the card's content.
+                  Some quick example
                 </p>
-              </div>
+              <% else %>
+                <h4 class="card-title text-center">Authorization</h4>
+                <form class="form-group my-2">
+                  <%= link_to 'Sign in', sign_in_path, class: 'btn btn-success d-block' %>
+                </form>
+                <%= link_to 'Sign up', sign_up_path, class: 'text-center d-block' %>
+              <% end %>
             </div>
           </div>
+          <%= link_to '+ New Post', new_article_path, class: 'btn btn-success mt-2 d-block' %>
         </div>
       </div>
     </div>
