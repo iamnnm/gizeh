@@ -1,13 +1,13 @@
 <div class="d-flex flex-row">
   <div class="mr-3">
-    <div class="btn-group-vertical" role="group" aria-label="Basic example">
+    <div class="btn-group-vertical shadow" role="group" aria-label="Basic example">
       <button type="button" class="btn btn-secondary">▲</button>
       <button type="button" class="btn btn-secondary">19</button>
       <button type="button" class="btn btn-secondary">▼</button>
     </div>
   </div>
   <div class="ml-3">
-    <div class="card">
+    <div class="card shadow">
       <div class="card-header">
         <strong class="card-title" style="font-size: 25px"><%= @article.title %></strong>
       </div>
@@ -19,11 +19,11 @@
         <div class="float-right"><%= distance_of_time_in_words(Time.now, @article.created_at, include_seconds: true) %></div>
       </div>
     </div>
-    <div class="mt-2">
-      <%= link_to 'Back', articles_path, class: 'btn btn-success' %>
-      <%= link_to 'Edit', edit_article_path, class: 'btn btn-success' %>
+    <div class="d-flex justify-content-around mt-4">
+      <%= link_to 'Back', articles_path, class: 'btn btn-success shadow px-5' %>
+      <%= link_to 'Edit', edit_article_path, class: 'btn btn-success shadow px-5' %>
       <%= link_to 'Delete', article_path, method: :delete,
-                  data: { confirm: 'Are you sure?' }, class: 'btn btn-success' %>
+                  data: { confirm: 'Are you sure?' }, class: 'btn btn-success shadow px-5' %>
     </div>
   </div>
 </div>

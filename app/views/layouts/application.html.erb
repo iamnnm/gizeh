@@ -11,7 +11,7 @@
   </head>
 
   <body>
-    <nav class="navbar navbar-expand-lg navbar-light bg-light">
+    <nav class="navbar navbar-expand-lg navbar-light bg-light shadow">
     <div class="container">
       <%= link_to 'Gizeh', root_path, class: 'navbar-brand'%>
       <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
@@ -64,7 +64,7 @@
         </div>
         <div class="col-3">
           <div class="card">
-            <div class="card-body">
+            <div class="card-body shadow">
               <% if user_signed_in? %>
                 <h4 class="card-title"><%= current_user.name %></h4>
                 <h6 class="card-subtitle mb-2 text-muted"><%= current_user.email %></h6>
@@ -80,7 +80,7 @@
               <% end %>
             </div>
           </div>
-          <%= link_to '+ New Post', new_article_path, class: 'btn btn-success mt-2 d-block' %>
+          <%= link_to '+ New Post', new_article_path, class: 'btn btn-success mt-2 d-block shadow' %>
         </div>
       </div>
     </div>

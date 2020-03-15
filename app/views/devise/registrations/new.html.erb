@@ -1,29 +1,36 @@
-<h2>Sign up</h2>
+<h2 class="pb-4 text-center">Sign up</h2>
 
 <%= form_for(resource, as: resource_name, url: registration_path(resource_name)) do |f| %>
   <%= render "devise/shared/error_messages", resource: resource %>
 
-  <div class="field">
-    <%= f.label :email %><br />
-    <%= f.email_field :email, autofocus: true, autocomplete: "email" %>
-  </div>
+  <form>
+    <div class="form-group">
+      <%= f.label :email, class: 'font-weight-bold' %><br />
+      <%= f.email_field :email, autocomplete: "email", class: 'form-control px-4 py-4' %>
+    </div>
 
-  <div class="field">
-    <%= f.label :password %>
-    <% if @minimum_password_length %>
-    <em>(<%= @minimum_password_length %> characters minimum)</em>
-    <% end %><br />
-    <%= f.password_field :password, autocomplete: "new-password" %>
-  </div>
+    <div class="form-group">
+      <%= f.label :password, class: 'font-weight-bold' %>
+      <% if @minimum_password_length %>
+        <em>(<%= @minimum_password_length %> characters minimum)</em>
+      <% end %><br />
+      <%= f.password_field :password, autocomplete: "new-password", class: 'form-control px-4 py-4' %>
+    </div>
 
-  <div class="field">
-    <%= f.label :password_confirmation %><br />
-    <%= f.password_field :password_confirmation, autocomplete: "new-password" %>
-  </div>
+    <div class="form-group">
+      <%= f.label :password_confirmation, class: 'font-weight-bold' %><br />
+      <%= f.password_field :password_confirmation, autocomplete: "new-password", class: 'form-control px-4 py-4' %>
+    </div>
 
-  <div class="actions">
-    <%= f.submit "Sign up" %>
-  </div>
+    <div class="actions">
+      <%= f.submit "Sign up", class: 'btn btn-primary d-block w-100  px-3 py-3' %>
+    </div>
+
+    <div class="mt-2">
+      <hr>
+    </div>
+
+  </form>
 <% end %>
 
 <%= render "devise/shared/links" %>
