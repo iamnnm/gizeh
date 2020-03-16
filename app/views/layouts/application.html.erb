@@ -69,7 +69,7 @@
                 <h4 class="card-title"><%= current_user.name %></h4>
                 <h6 class="card-subtitle mb-2 text-muted"><%= current_user.email %></h6>
                 <div class="card-text">
-                  <ul class="">
+                  <ul class="ul">
                     <li><%= link_to 'Articles', list_user_path %></li>
                     <li><%= link_to 'Comments', '#' %></li>
                     <li><%= link_to 'Saved', '#' %></li>
@@ -78,7 +78,7 @@
                     <li><%= link_to 'Notes', '#' %></li>
                   </ul>
                 </div>
-                <%= link_to 'Sign out', sign_out_path , class: 'btn btn-success mt-2 d-block'  %>
+                <%= link_to 'Sign out', sign_out_path , class: 'text-left mt-2 d-block'  %>
               <% else %>
                 <h4 class="card-title text-center">Authorization</h4>
                 <form class="form-group my-2">
@@ -88,7 +88,7 @@
               <% end %>
             </div>
           </div>
-          <%= link_to '+ New Post', new_article_path, class: 'btn btn-success mt-2 d-block shadow' %>
+          <%= link_to '+ New Post', new_article_path, class: 'btn btn-success mt-4 d-block shadow' %>
         </div>
       </div>
     </div>

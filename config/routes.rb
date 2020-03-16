@@ -12,6 +12,7 @@ Rails.application.routes.draw do
   resource :user do
     member do
       get 'list'
+      get 'user_account'
     end
   end
 end

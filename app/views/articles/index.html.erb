@@ -16,7 +16,7 @@
           <p class="card-text"><%= simple_format(article.post) %></p>
         </div>
         <div class="card-footer">
-          <div class="float-left">Creator: <%= article.user.name %></div>
+          <div class="float-left">Creator: <%= link_to "#{article.user.name}", user_account_user_path(article.user) %></div>
           <div class="float-right"><%= distance_of_time_in_words(Time.now, article.created_at, include_seconds: true) %></div>
         </div>
       </div>
