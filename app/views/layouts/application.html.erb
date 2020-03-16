@@ -69,7 +69,7 @@
                 <h4 class="card-title"><%= current_user.name %></h4>
                 <h6 class="card-subtitle mb-2 text-muted"><%= current_user.email %></h6>
                 <p class="card-text">
-                  Some quick example
+                  <%= link_to 'Articles', '#' %>
                 </p>
                 <%= link_to 'Sign out', sign_out_path , class: 'btn btn-success mt-2 d-block'  %>
               <% else %>

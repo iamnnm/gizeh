@@ -1,9 +1,11 @@
 class Article < ApplicationRecord
+  belongs_to :user
+
   before_validation :log
 
   scope :posted, -> { where(post: '5') }
 
-  validates :title, :post, presence: true
+  validates :title, :post, :user, presence: true
 
   private
 
