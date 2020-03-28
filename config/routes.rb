@@ -9,10 +9,5 @@ Rails.application.routes.draw do
 
   root to: 'articles#index'
   resources :articles
-  resource :user do
-    member do
-      get 'list'
-      get 'user_account'
-    end
-  end
+  resources :users
 end

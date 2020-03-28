@@ -1,22 +1,15 @@
 class UsersController < ApplicationController
   before_action :set_user
 
-  def user_account
-    # render plain: params.inspect
-    @user_account = User.find(params[:format])
-  end
-
-  def list
-    @articles = User.find(current_user.id).articles
-  end
+  def show; end
 
   private
 
   def set_user
-    @user ||= User.find(current_user.id)
+    @user ||= User.find(params[:id])
   end
 
   def user_params
-    params.require(:user).permit(:id, :format)
+    params.require(:user).permit(:id)
   end
 end
