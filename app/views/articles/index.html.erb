@@ -1,5 +1,5 @@
 <% @articles.each do |article| %>
-  <div class="mt-3" id="accordion" role="tablist">
+  <div class="mb-4" id="accordion" role="tablist">
     <div class="hek">
       <div class="d-table d-flex justify-content-center">
         <button type="button" class="btn btn-secondary shadow">▲</button>
@@ -18,7 +18,7 @@
       <div class="w-100">
         <div class="card shadow">
           <div class="card-header">
-            <strong class="card-title" style="font-size: 25px"><%= article.title %></strong>
+            <strong class="card-title" style="font-size: 25px"><%= link_to "#{article.title}", article_path(article.id) %></strong>
           </div>
           <div id="collapse<%= "#{article.id}" %>" class="collapse show" role="tabpanel" aria-labelledby="heading<%= "#{article.id}" %>">
             <div class="card-body">
