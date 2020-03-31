@@ -66,11 +66,11 @@
           <div class="card">
             <div class="card-body shadow">
               <% if user_signed_in? %>
-                <h4 class="card-title"><%= current_user.name %></h4>
+                <h4 class="card-title"><%= link_to "#{current_user.name}", user_path(current_user.id) %></h4>
                 <h6 class="card-subtitle mb-2 text-muted"><%= current_user.email %></h6>
                 <div class="card-text">
                   <ul class="ul">
-                    <li><%= link_to 'Articles', list_user_path %></li>
+                    <li><%= link_to 'Articles', user_path(current_user.id) %></li>
                     <li><%= link_to 'Comments', '#' %></li>
                     <li><%= link_to 'Saved', '#' %></li>
                     <li><%= link_to 'Subscribes', '#' %></li>

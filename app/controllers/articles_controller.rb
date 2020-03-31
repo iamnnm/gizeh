@@ -6,7 +6,12 @@ class ArticlesController < ApplicationController
   end
 
   def new
-    @article = Article.new
+    if user_signed_in?
+      @article = Article.new
+    else
+      redirect_back(fallback_location: root_path,
+                    notice: 'You have to sign in or sign up!')
+    end
   end
 
   def create
