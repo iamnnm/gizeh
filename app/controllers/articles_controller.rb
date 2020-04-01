@@ -44,11 +44,11 @@ class ArticlesController < ApplicationController
   private
 
   def set_current_user_article
-    @article ||= current_user.articles.find(params[:id])
+    @article ||= current_user.articles.find_by(id: params[:id])
   end
 
   def set_article
-    @article ||= Article.find(params[:id])
+    @article ||= Article.find_by(id: params[:id])
   end
 
   def article_params
