@@ -1,21 +1,19 @@
 class ArticlesController < ApplicationController
-  before_action :set_article, except: %i[index new create]
+  before_action :authenticate_user!, except: %i[show index]
+
+  before_action :set_article, only: %i[show]
+  before_action :set_current_user_article, only: %i[edit update destroy]
 
   def index
     @articles = Article.all.order(created_at: :desc)
   end
 
   def new
-    if user_signed_in?
-      @article = Article.new
-    else
-      redirect_back(fallback_location: root_path,
-                    notice: 'You have to sign in or sign up!')
-    end
+    @article = current_user.articles.build
   end
 
   def create
-    @article = Article.new(article_params)
+    @article = current_user.articles.build(article_params)
     @article.user = current_user
 
     if @article.save
@@ -44,6 +42,10 @@ class ArticlesController < ApplicationController
   end
 
   private
+
+  def set_current_user_article
+    @article ||= current_user.articles.find(params[:id])
+  end
 
   def set_article
     @article ||= Article.find(params[:id])

@@ -1,44 +1,10 @@
-<div id="accordion" role="tablist">
-  <div class="hek">
-    <div class="d-table d-flex justify-content-center">
-      <button type="button" class="btn btn-secondary shadow">▲</button>
-    </div>
-    <div class="d-table my-2 w-100 tif">
-      <div class="tex">12764</div>
-    </div>
-    <div class="d-table d-flex justify-content-center">
-      <button type="button" class="btn btn-secondary shadow">▼</button>
-    </div>
-    <div class="card mt-3 mx-4" data-toggle="collapse" href="#collapse<%= "#{@article.id}" %>" aria-expanded="true" aria-controls="collapse<%= "#{@article.id}" %>">
-      <div class="px-3 font-weight-bold text-center">−</div>
-    </div>
+<%= render 'articles/articles', articles: [@article] %>
+
+<% if current_user_can_edit? @article %>
+  <div class="d-flex justify-content-around mt-4">
+    <%= link_to 'Back', articles_path, class: 'btn btn-success shadow px-5' %>
+    <%= link_to 'Edit', edit_article_path, class: 'btn btn-success shadow px-5' %>
+    <%= link_to 'Delete', article_path, method: :delete,
+                data: { confirm: 'Are you sure?' }, class: 'btn btn-success shadow px-5' %>
   </div>
-  <div class="d-flex flex-row">
-    <div class="w-100">
-      <div class="card shadow">
-        <div class="card-header">
-          <strong class="card-title" style="font-size: 25px"><%= @article.title %></strong>
-        </div>
-        <div id="collapse<%= "#{@article.id}" %>" class="collapse show" role="tabpanel" aria-labelledby="heading<%= "#{@article.id}" %>">
-          <div class="card-body">
-            <p class="card-text"><%= simple_format(@article.post) %></p>
-          </div>
-        </div>
-        <div class="card-footer text-right">
-          <div class="float-left">Creator: <%= link_to "#{@article.user.name}", user_path(@article.user) %></div>
-          <div class="float-right"><%= distance_of_time_in_words(Time.now, @article.created_at, include_seconds: true) %></div>
-          <div class="clearfix"></div>
-          <div>1</div>
-          <div>1</div>
-          <div>1</div>
-        </div>
-      </div>
-      <div class="d-flex justify-content-around mt-4">
-        <%= link_to 'Back', articles_path, class: 'btn btn-success shadow px-5' %>
-        <%= link_to 'Edit', edit_article_path, class: 'btn btn-success shadow px-5' %>
-        <%= link_to 'Delete', article_path, method: :delete,
-                    data: { confirm: 'Are you sure?' }, class: 'btn btn-success shadow px-5' %>
-      </div>
-    </div>
-  </div>
-</div>
+<% end %>
