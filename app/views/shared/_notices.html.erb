@@ -1,0 +1,5 @@
+<% if flash.any? %>
+  <% flash.each do |_name, message| %>
+    <%= content_tag :div, message, class: "sticky fixed-top text-center alert-success py-1" %>
+  <% end %>
+<% end %>

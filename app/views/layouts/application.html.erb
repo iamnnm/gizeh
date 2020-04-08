@@ -1,105 +1,27 @@
 <!DOCTYPE html>
 <html>
   <head>
-    <title>Gizeh</title>
-    <%= csrf_meta_tags %>
-    <%= csp_meta_tag %>
-
-    <%= stylesheet_link_tag 'application', media: 'all', 'data-turbolinks-track': 'reload' %>
-    <%= javascript_pack_tag 'application', 'data-turbolinks-track': 'reload' %>
-    <%= stylesheet_pack_tag 'application', media: 'all', 'data-turbolinks-track': 'reload' %>
+    <%= render 'shared/head' %>
   </head>
 
   <body>
-    <nav class="navbar navbar-expand-lg navbar-light bg-light shadow">
-    <div class="container">
-      <%= link_to 'Gizeh', root_path, class: 'navbar-brand'%>
-      <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
-        <span class="navbar-toggler-icon"></span>
-      </button>
+    <%= render 'shared/navbar' %>
 
-      <div class="collapse navbar-collapse" id="navbarSupportedContent">
-        <ul class="navbar-nav mr-auto">
-          <li class="nav-item active">
-            <a class="nav-link" href="#">Home <span class="sr-only">(current)</span></a>
-          </li>
-          <li class="nav-item">
-            <a class="nav-link" href="#">Link</a>
-          </li>
-          <li class="nav-item dropdown">
-            <a class="nav-link dropdown-toggle" href="#" id="navbarDropdown" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
-              Dropdown
-            </a>
-            <div class="dropdown-menu" aria-labelledby="navbarDropdown">
-              <a class="dropdown-item" href="#">Action</a>
-              <a class="dropdown-item" href="#">Another action</a>
-              <div class="dropdown-divider"></div>
-              <a class="dropdown-item" href="#">Something else here</a>
-            </div>
-          </li>
-          <li class="nav-item">
-            <a class="nav-link disabled" href="#">Disabled</a>
-          </li>
-        </ul>
-        <form class="form-inline my-2 my-lg-0">
-          <input class="form-control mr-sm-2" type="search" placeholder="Search" aria-label="Search">
-          <button class="btn btn-outline-success my-2 my-sm-0" type="submit">Search</button>
-        </form>
-      </div>
-    </div>
-    </nav>
+    <%= render 'shared/notices' %>
 
-    <% if flash.any? %>
-    <% flash.each do |name, message| %>
-      <%= content_tag :div, message, class: "sticky fixed-top text-center alert-success py-1" %>
-    <% end %>
-  <% end %>
-
-    <div class="container q">
+    <section class="container q">
       <div class="row">
         <div class="col-9">
-
           <%= yield %>
-
         </div>
         <div class="col-3">
-          <div class="card">
-            <div class="card-body shadow">
-              <% if user_signed_in? %>
-                <h4 class="card-title"><%= link_to "#{current_user.name}", user_path(current_user.id) %></h4>
-                <h6 class="card-subtitle mb-2 text-muted"><%= current_user.email %></h6>
-                <div class="card-text">
-                  <ul class="ul">
-                    <li><%= link_to 'Articles', user_path(current_user.id) %></li>
-                    <li><%= link_to 'Comments', '#' %></li>
-                    <li><%= link_to 'Saved', '#' %></li>
-                    <li><%= link_to 'Subscribes', '#' %></li>
-                    <li><%= link_to 'Ban-list', '#' %></li>
-                    <li><%= link_to 'Notes', '#' %></li>
-                  </ul>
-                </div>
-                <%= link_to 'Sign out', sign_out_path , class: 'text-left mt-2 d-block'  %>
-              <% else %>
-                <h4 class="card-title text-center">Authorization</h4>
-                <form class="form-group my-2">
-                  <%= link_to 'Sign in', sign_in_path, class: 'btn btn-success d-block' %>
-                </form>
-                <%= link_to 'Sign up', sign_up_path, class: 'text-center d-block' %>
-              <% end %>
-            </div>
-          </div>
-          <%= link_to '+ New Post', new_article_path, class: 'btn btn-success mt-4 d-block shadow' %>
-          <div class="card mt-4 shadow">
-            <div class="card-header">
-              Comment of the day
-            </div>
-            <div class="card-body">
-              <h4 class="card-title">Username</h4>
-              <p class="card-text">With supporting text below as a natural lead-in to additional content.</p>
-            </div>
-          </div>
+          <%= render 'shared/rightbar' %>
         </div>
       </div>
-    </div>
+    </section>
+
+    <footer>
+      <%= render 'shared/footer' %>
+    </footer>
   </body>
 </html>
