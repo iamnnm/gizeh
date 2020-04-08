@@ -1,6 +1,4 @@
 class ArticlesController < ApplicationController
-  add_flash_types :success, :danger, :info, :warning
-
   before_action :authenticate_user!, except: %i[show index]
 
   before_action :set_article, only: %i[show]
