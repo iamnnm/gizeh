@@ -1,4 +1,6 @@
 class ArticlesController < ApplicationController
+  add_flash_types :success, :danger, :info, :warning
+
   before_action :authenticate_user!, except: %i[show index]
 
   before_action :set_article, only: %i[show]
@@ -17,7 +19,7 @@ class ArticlesController < ApplicationController
     @article.user = current_user
 
     if @article.save
-      redirect_to @article, notice: 'Post has created!'
+      redirect_to @article, success: 'Post has created!'
     else
       render :new
     end
@@ -27,7 +29,7 @@ class ArticlesController < ApplicationController
 
   def update
     if @article.update(article_params)
-      redirect_to @article, notice: 'Post has updated!'
+      redirect_to @article, success: 'Post has updated!'
     else
       render :edit
     end
@@ -38,7 +40,7 @@ class ArticlesController < ApplicationController
   def destroy
     @article.destroy
 
-    redirect_to articles_path
+    redirect_to articles_path, success: 'Post has deleted!'
   end
 
   private
