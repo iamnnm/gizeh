@@ -14,4 +14,12 @@ class Comment < ApplicationRecord
       super
     end
   end
+
+  def destroy?
+    if user.nil?
+      true
+    else
+      super
+    end
+  end
 end
