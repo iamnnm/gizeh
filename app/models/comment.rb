@@ -7,4 +7,11 @@ class Comment < ApplicationRecord
     Comment.where(parent_id: id)
   end
 
+  def destroy
+    if comments.present?
+      update(user_id: nil, body: nil)
+    else
+      super
+    end
+  end
 end
