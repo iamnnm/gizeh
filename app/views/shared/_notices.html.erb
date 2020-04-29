@@ -1,5 +1,5 @@
 <% if flash.any? %>
   <% flash.each do |type, message| %>
-    <%= content_tag :div, message, class: "alert #{bootstrap_class_for(type)} sticky fixed-top text-center alert-success py-1" %>
+    <%= content_tag :div, message, class: "#{bootstrap_class_for(type)} info" %>
   <% end %>
 <% end %>
