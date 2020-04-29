@@ -7,6 +7,8 @@ class Article < ApplicationRecord
 
   validates :title, :post, :user, presence: true
 
+  has_many :comments
+
   private
 
   def log

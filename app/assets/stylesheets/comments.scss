@@ -1,0 +1,129 @@
+// Place all the styles related to the Comments controller here.
+// They will automatically be included in application.css.
+// You can use Sass (SCSS) here: https://sass-lang.com/
+
+* {
+  box-sizing: border-box;
+}
+
+.dnone {
+  display: none;
+}
+
+.comment-main {
+  position: relative;
+  margin: 20px 15px;
+}
+
+.comment {
+  padding-bottom: 10px;
+}
+
+.parent-list {
+  position: relative;
+  padding-top: 10px;
+}
+
+.parent-comment {
+  border-left: 1px solid #dbdbdb;
+  margin-left: 6px;
+  padding-left: 40px;
+}
+
+.toggle {
+  position: absolute;
+  background-color: white;
+  color: #cdc5c2;
+  height: 25px;
+}
+
+.toggle:hover {
+  cursor: pointer;
+  color: green;
+}
+
+.hidden-link {
+  font-weight: bold;
+  cursor: pointer;
+  margin-left: 48px;
+}
+
+/* ----------------------------------- */
+
+.comment-head div {
+  display: inline-block;
+}
+
+.vote-up:hover, .vote-down:hover {
+  color: #5f636b;
+  cursor: pointer;
+}
+
+.vote-up:active, .vote-down:active {
+  color: #91969e;
+}
+
+.comment-owner {
+  margin-left: 10px;
+}
+
+/* .user-avatar {
+} */
+
+.user-name {
+  font-weight: bold;
+}
+
+.comment-time {
+  margin-left: 15px;
+}
+
+.comment-reference {
+  margin-left: 15px;
+  opacity: 0;
+  transition: opacity .2s;
+  text-align: center;
+}
+
+.comment:hover .comment-reference {
+  opacity: 1;
+}
+
+.comment-reference div {
+  margin-right: 0px;
+  border-radius: 3px;
+  width: 22px;
+  height: 22px;
+  vertical-align: middle;
+  transition: all .1s;
+}
+
+.comment-reference div:hover {
+  background-color: green;
+  cursor: pointer;
+  color: white;
+}
+
+.comment-body {
+  margin: 10px 0px;
+}
+
+div .comment-btn a {
+  display: inline-block;
+  color: forestgreen;
+  margin-right: 15px;
+  width: 48px;
+}
+
+div .comment-btn a:hover{
+  color: darkgreen;
+  cursor: pointer;
+}
+
+.no-comments {
+  text-align: center;
+}
+
+#reply-btn:active, #delete-btn:active {
+  color: limegreen;
+}

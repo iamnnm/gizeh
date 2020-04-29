@@ -8,3 +8,23 @@
                 data: { confirm: 'Are you sure?' }, class: 'btn btn-success shadow px-5' %>
   </div>
 <% end %>
+
+<div class="card mt-4 shadow">
+  <div class="card-header">
+    <h1 class="mt-1">Comments:</h1>
+  </div>
+  <div class="card-body">
+    <% if @article.comments.count == 0 %>
+      <div class="no-comments">This article has no comments yet</div>
+    <% else %>
+      <% @article.comments.each do |comment| %>
+        <% if comment.parent_id == nil %>
+          <%= render 'comments/entry-point', comment: comment %>
+        <% end %>
+      <% end %>
+    <% end %>
+  </div>
+  <div class="card-footer">
+    <%= render 'comments/form' %>
+  </div>
+</div>

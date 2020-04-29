@@ -1,0 +1,8 @@
+<div class="comment-main">
+  <%= render 'comments/body', comment: comment%>
+  <% if comment.comments.present? %>
+    <% comment.comments.each do |comment| %>
+      <%= render 'comments/system', comment: comment%>
+    <% end %>
+  <% end %>
+</div>

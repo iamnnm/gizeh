@@ -1,0 +1,11 @@
+<%= form_with model: [@article, Comment.new], class: 'mt-2' do |f| %>
+  <div class="form-group">
+    <%= f.text_area :body, class: 'form-control', placeholder: 'type text of a commentary' %>
+  </div>
+  <div class="">
+    <% if local_assigns.has_key? :parent_id %>
+      <%= f.hidden_field :parent_id, value: local_assigns[:parent_id] %>
+    <% end %>
+    <%= f.submit 'Save', class: 'btn btn-success', style: 'width: 133px;' %>
+  </div>
+<% end %>

@@ -8,6 +8,8 @@ Rails.application.routes.draw do
   end
 
   root to: 'articles#index'
-  resources :articles
+  resources :articles do
+    resources :comments, only: %i[create destroy]
+  end
   resources :users
 end

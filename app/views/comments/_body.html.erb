@@ -1,0 +1,36 @@
+<div class="comment">
+  <div class="comment-head">
+    <div class="comment-rate">
+      <div class="rate">+35</div>
+      <div class="vote-up">▲</div>
+      <div class="vote-down">▼</div>
+    </div>
+    <div class="comment-owner">
+      <div class="user-avatar"><i class="far fa-dizzy"></i></div>
+      <div class="user-name"><%= comment.user.name %></div>
+    </div>
+    <div class="comment-time">
+      <%= distance_of_time_in_words(Time.now, comment.created_at, include_seconds: true) %> ago
+    </div>
+    <div class="comment-reference">
+      <div class="">
+        <i class="fab fa-bootstrap"></i>
+      </div>
+      <div class="">
+        <i class="fab fa-bootstrap"></i>
+      </div>
+      <div class="">
+        <i class="fab fa-bootstrap"></i>
+      </div>
+    </div>
+  </div>
+  <div class="comment-body">
+    <%= comment.body %>
+  </div>
+  <div class="comment-btn" >
+    <a id="reply-btn">replay</a>
+    <%= link_to 'delete', [@article, comment], method: :delete,
+                  data: { confirm: 'Are you sure?' }, id: 'delete-btn' if current_user_can_edit? comment %>
+  </div>
+  <div class="dnone" id="reply-form"><%= render 'comments/form', parent_id: comment.id %></div>
+</div>
