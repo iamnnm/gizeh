@@ -22,7 +22,7 @@
     <div class="comment-btn" >
       <a id="reply-btn">replay</a>
     </div>
-    <div class="dnone" id="reply-form"><%= render 'comments/form', parent_id: comment.id %></div>
+    <div class="dnone" id="reply-form"><%= render 'comments/form', parent_id: comment.id, id: 'new-child-comment', close: 'close-form' %></div>
   </div>
 <% else %>
   <div class="comment">
@@ -58,9 +58,9 @@
     </div>
     <div class="comment-btn" >
       <a id="reply-btn">replay</a>
-      <%= link_to 'delete', [@article, comment], method: :delete,
-                  data: { confirm: 'Are you sure?' }, id: 'delete-btn' if current_user_can_edit? comment %>
+      <%= link_to 'delete', [@article, comment], method: :delete, remote: true,
+                  data: { confirm: 'Are you sure?' }, class: "#{local_assigns[:del_sign]}" if current_user_can_edit? comment %>
     </div>
-    <div class="dnone" id="reply-form"><%= render 'comments/form', parent_id: comment.id %></div>
+    <div class="dnone" id="reply-form"><%= render 'comments/form', parent_id: comment.id, id: 'new-child-comment', close: 'close-form' %></div>
   </div>
 <% end %>

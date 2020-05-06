@@ -1,5 +1,5 @@
-<div class="comment-main">
-  <%= render 'comments/body', comment: comment, del_sign: 'delete-parent-btn' %>
+<div class="parent-comment">
+  <%= render 'comments/body', comment: comment, del_sign: 'delete-child-btn' %>
   <% if comment.comments.present? %>
     <%= render 'comments/parent-list', comment: comment%>
   <% end %>

@@ -1,11 +1,12 @@
-<%= form_with model: [@article, Comment.new], class: 'mt-2' do |f| %>
+<%= form_with model: [@article, Comment.new], class: "mt-2 #{local_assigns[:id]}", remote: true, data: {type: :json } do |f| %>
+
   <div class="form-group">
-    <%= f.text_area :body, class: 'form-control', placeholder: 'type text of a commentary' %>
+    <%= f.text_area :body, class: 'form-control', placeholder: 'type text of a commentary', id: "#{rand}" %>
   </div>
-  <div class="">
+  <div class="form">
     <% if local_assigns.has_key? :parent_id %>
-      <%= f.hidden_field :parent_id, value: local_assigns[:parent_id] %>
+      <%= f.hidden_field :parent_id, value: local_assigns[:parent_id], id: "#{rand}" %>
     <% end %>
-    <%= f.submit 'Save', class: 'btn btn-success', style: 'width: 133px;' %>
+    <%= f.submit 'Save', class: "btn btn-success #{local_assigns[:close]}", style: 'width: 133px;' %>
   </div>
 <% end %>

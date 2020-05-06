@@ -7,18 +7,31 @@ class CommentsController < ApplicationController
   def create
     @comment = @article.comments.build(comment_params)
     @comment.user = current_user
-
-    if @comment.save
-      redirect_to @article, success: 'Comment has created!'
+    # render json: { error: @comment.errors }, status: 403
+    if @comment.parent_id.nil?
+      if @comment.save
+        render partial: 'comments/entry-point', locals: { comment: @comment }
+      else
+        render json: { error: 'Can\'t create an empty comment' }, status: 403
+      end
     else
-      redirect_to @article, error: 'Something went wrong!'
+      if @comment.save
+        render partial: 'comments/parent-list', locals: { comment: @comment }
+      else
+        render json: { error: 'Can\'t create an empty comment' }, status: 403
+      end
     end
   end
 
-  def destroy
-    @comment.destroy
+  def update; end
 
-    redirect_to @article, success: 'Post has deleted!'
+  def destroy
+    if @comment.nil?
+      render json: { error: 'You are trying to delete not your comment.
+                             Go away you little scumbag!' }, status: 403
+    else
+      @comment.destroy
+    end
   end
 
   private
