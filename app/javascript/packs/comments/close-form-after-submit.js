@@ -4,7 +4,7 @@ export default function closeFormAfterSubmit() {
     for (let reply of replies) {
         reply.onclick = () => {
             reply.parentElement.parentElement.parentElement.classList.toggle('dnone');
-            reply.previousElementSibling.firstElementChild.innerHTML = 'replay';
+            reply.parentElement.parentElement.parentElement.previousElementSibling.firstElementChild.innerHTML = 'replay';
         }
     }
 }

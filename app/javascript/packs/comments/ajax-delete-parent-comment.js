@@ -7,7 +7,12 @@ export default function ajaxDeleteParentComment () {
         link.addEventListener("ajax:success", (e) => {
             const [data, status] = e.detail;
             addNotice('alert-massage-success', 'Comment has deleted!');
-            link.parentElement.parentElement.remove();
+            // link.parentElement.parentElement.remove();
+            if (e.target.parentElement.parentElement.parentElement.parentElement.children.length === 4) {
+                e.target.parentElement.parentElement.parentElement.parentElement.remove();
+            } else {
+                e.target.parentElement.parentElement.parentElement.remove();
+            }
         });
         link.addEventListener("ajax:error", (e) => {
             const [data, status] = e.detail;

@@ -40,7 +40,14 @@ export default function ajaxCreateChildComment () {
             insert_point.previousElementSibling.addEventListener('ajax:success', (e) => {
                 const [data, status] = e.detail;
                 addNotice('alert-massage-success', 'Comment has deleted!');
-                e.target.parentElement.parentElement.parentElement.remove();
+
+                // e.target.parentElement.parentElement.parentElement.remove();
+
+                if (e.target.parentElement.parentElement.parentElement.parentElement.children.length === 4) {
+                    e.target.parentElement.parentElement.parentElement.parentElement.remove();
+                } else {
+                    e.target.parentElement.parentElement.parentElement.remove();
+                }
             });
             insert_point.previousElementSibling.addEventListener('ajax:error', (e) => {
                 const [data, status] = e.detail;
