@@ -36,9 +36,13 @@ class ArticlesController < ApplicationController
   def show; end
 
   def destroy
-    @article.destroy
+    if @article.nil?
+      redirect_to root_path
+    else
+      @article.destroy
 
-    redirect_to articles_path, success: 'Post has deleted!'
+      redirect_to articles_path, success: 'Post has deleted!'
+    end
   end
 
   private

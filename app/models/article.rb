@@ -1,19 +1,11 @@
 class Article < ApplicationRecord
   belongs_to :user
-
-  before_validation :log
-
-  scope :posted, -> { where(post: '5') }
-
-  validates :title, :post, :user, presence: true
-
   has_many :comments
 
-  private
+  validates :title, :post, presence: true
+  validates :title, length: { maximum: 100 }
+  validates :post, length: { maximum: 10_000 }
+  validates_associated :user
 
-  def log
-    puts
-    puts '  HELLO'
-    puts
-  end
+  scope :posted, -> { where(post: '5') }
 end

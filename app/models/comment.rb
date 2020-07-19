@@ -3,7 +3,8 @@ class Comment < ApplicationRecord
   belongs_to :article
   belongs_to :parent, class_name: 'Comment', optional: true
 
-  validates :body, presence: true
+  validates :body, presence: true, length: { maximum: 10_000 }
+  validates_associated :user, :article
 
   def comments
     Comment.where(parent_id: id)
